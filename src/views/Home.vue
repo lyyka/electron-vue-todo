@@ -1,18 +1,17 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+    import VAddToDo from "@/components/molecules/VAddToDo"
+    import VToDoList from "@/components/molecules/VToDoList"
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        components: { VAddToDo, VToDoList },
+    };
 </script>
+<template>
+    <div id="todo-wrapper">
+        <div class="px-3 pt-3">
+            <h1>{{ this.$t("title") }}</h1>
+            <VAddToDo class="mb-4" />
+        </div>
+        <VToDoList />
+    </div>
+</template>

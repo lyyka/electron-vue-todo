@@ -1,0 +1,25 @@
+@import './variables';
+
+.c-bg{
+    &-yellow{
+        background-color: $color-yellow;
+    }
+    &-orange{
+        background-color: $color-orange;
+    }
+    &-grayish{
+        background-color: $color-grayish;
+    }
+}
+
+.c-text{
+    &-yellow{
+        background-color: $color-yellow;
+    }
+    &-orange{
+        background-color: $color-orange;
+    }
+    &-grayish{
+        background-color: $color-grayish;
+    }
+}

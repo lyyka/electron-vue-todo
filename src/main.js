@@ -1,12 +1,40 @@
 import Vue from 'vue'
+import VCalendar from 'v-calendar'
+import UniqueId from 'vue-unique-id';
+// import {Swatches} from 'vue-color'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import i18n from './i18n'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
 
+Vue.use(VCalendar, {
+    componentPrefix: 'vc',
+    locales: {
+        'sr': {
+            firstDayOfWeek: 2,
+            masks: {
+                L: "DD/MM/YYYY",
+            }
+        },
+        'en': {
+            firstDayOfWeek: 1,
+            masks: {
+                L: "MM/DD/YYYY",
+            }
+        }
+    }
+})
+Vue.use(UniqueId);
+
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    // components: {
+        // 'swatches-picker': Swatches,
+    // },
+    router,
+    store,
+    i18n,
+    render: h => h(App)
 }).$mount('#app')
