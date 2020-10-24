@@ -1,46 +1,20 @@
 <script>
-    import { mapGetters, mapMutations } from "vuex"
-    // import {Swatches} from 'vue-color'
-    import axios from 'axios'
-    import VInput from '../../atoms/VInput'
+    import { mapGetters, mapActions } from "vuex"
+    import VInput from '@/components/atoms/VInput'
 
     export default {
         components: {VInput},
-        data() {
-            return {
-                todo: {
-                    body: "",
-                    due_date: undefined,
-                    color: "#333",
-                },
-            };
-        },
 
         computed: {
-            ...mapGetters(["getBaseAPIUrl"]),
+            ...mapGetters(["getTodo"]),
         },
 
         methods: {
-            ...mapMutations(["updateTodos"]),
+            ...mapActions(["storeNewTodo"]),
             async submitForm(e) {
-                try{
-                    const {data} = await axios.post(`${this.getBaseAPIUrl}/api/todos`, this.todo)
-                    if(data.success){
-                        this.updateTodos([{...this.todo}])
-                        this.resetForm()
-                    }
-                }
-                catch(e){
-                    console.error(e)
-                }
-
+                this.storeNewTodo(this.getTodo)
                 e.preventDefault()
             },
-
-            resetForm(){
-                this.todo.body = ""
-                this.todo.due_date = undefined
-            }
         },
     };
 </script>
@@ -49,12 +23,12 @@
         <div class="d-flex justify-content-between align-items-center">
             <VInput
                 class='mr-3'
-                v-model="todo.body"
+                v-model="getTodo.body"
                 :placeholder="this.$t('inputPlaceholder')"
             />
             <vc-date-picker
                 mode="date" 
-                v-model="todo.due_date" 
+                v-model="getTodo.due_date" 
                 :popover="{placement: 'auto-start'}"
                 :locale="this.$i18n.locale"
                 :min-date="new Date()"

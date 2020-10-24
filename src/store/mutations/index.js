@@ -17,7 +17,15 @@ function updateSpecificTodo(state, todo){
     }
 }
 
+function resetCurrentTodo(state){
+    state.todo = {
+        body: "",
+        due_date: undefined,
+    }
+}
+
 export default {
     updateTodos,
     updateSpecificTodo,
+    resetCurrentTodo,
 }

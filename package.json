@@ -14,13 +14,14 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "main": "background.js",
+  "main": "src/background.js",
   "dependencies": {
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
     "core-js": "^3.6.5",
-    "electron-prebuilt-compile": "^8.2.0",
+    "electron-compile": "^6.4.4",
     "electron-rebuild": "^2.3.2",
+    "electron-squirrel-startup": "^1.0.0",
     "mongoose": "^5.10.9",
     "sass-loader": "^10.0.4",
     "v-calendar": "^1.0.8",
@@ -38,11 +39,48 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "electron-devtools-installer": "^3.1.0",
+    "electron-forge": "^5.2.4",
+    "electron-prebuilt-compile": "8.2.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.27.0",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.4",
     "vue-template-compiler": "^2.6.11"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm"
+      },
+      "electronWinstallerConfig": {
+        "name": "todo2"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "todo2"
+      }
+    }
   }
 }

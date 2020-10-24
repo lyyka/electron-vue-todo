@@ -1,14 +1,13 @@
 <script>
     import VToDoCard from "@/components/molecules/VToDoCard"
 
-    import { mapGetters, mapMutations } from "vuex"
-    import axios from 'axios'
+    import { mapGetters, mapActions } from "vuex"
 
     export default {
         components: {VToDoCard},
         
         computed: {
-            ...mapGetters(["getToDos", "getBaseAPIUrl"]),
+            ...mapGetters(["getToDos"]),
             completed() {
                 return this.getToDos.filter(e => e.completed)
             },
@@ -18,19 +17,11 @@
         },
 
         mounted() {
-            this.fetchTodos()
+            this.fetchNewTodos()
         },
         
         methods: {
-            ...mapMutations(["updateTodos"]),
-            async fetchTodos() {
-                try{
-                    const {data} = await axios.get(`${this.getBaseAPIUrl}/api/todos`)
-                    this.updateTodos(data)
-                } catch(e){
-                    console.error(e)
-                }
-            },
+            ...mapActions(["fetchNewTodos"]),
         }
     }
 </script>
