@@ -80,13 +80,13 @@ select {
 }
 
 .c-text-yellow {
-  background-color: #ffe05d;
+  color: #ffe05d;
 }
 .c-text-orange {
-  background-color: #ff9642;
+  color: #ff9642;
 }
 .c-text-grayish {
-  background-color: #646464;
+  color: #646464;
 }
 
 #title {

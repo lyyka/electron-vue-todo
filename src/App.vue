@@ -1,7 +1,11 @@
 <script>
 import VNavBar from './components/templates/VNavBar'
 export default {
-    components: {VNavBar}
+    components: {VNavBar},
+
+    mounted(){
+
+    }
 }
 </script>
 <template>

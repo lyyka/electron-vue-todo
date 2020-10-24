@@ -31,8 +31,22 @@
 </script>
 <template>
     <div class="todo-card border-bottom py-2 px-3 d-flex justify-content-between align-items-center">
-        <VCheckBox v-model="todoObject.completed" @input='onChecked' :completedLabel="todoObject.completed" :checked="todoObject.completed" :label="todo.body" />
-        <p v-if="todo.due_date && !todo.completed" class="mb-0">{{ todo.due_date.toLocaleDateString(this.$i18n.locale) }}</p>
+        <VCheckBox 
+            v-model="todoObject.completed" 
+            @input='onChecked' 
+            :completedLabel="todoObject.completed" 
+            :checked="todoObject.completed" 
+            :label="todo.body" 
+        />
+        
+        <p class="mb-0">
+            <span v-if="todo.due_date && !todo.completed">
+                {{ todo.due_date.toLocaleDateString(this.$i18n.locale) }}
+            </span>
+            <span v-else-if="!todo.completed">
+                -
+            </span>
+        </p>
     </div>
 </template>
 <style lang="scss" scoped>

@@ -46,7 +46,7 @@ export default {
             type="checkbox"
         />
         <span class="check"></span>
-        <label :class="[completedLabel ? 'text-muted completed-label' : '']" :for="this.uid" v-if="label">{{ label }}</label>
+        <label :class="[completedLabel ? 'text-muted completed-label' : '']" class="mb-0" :for="this.uid" v-if="label">{{ label }}</label>
     </div>
 </template>
 <style lang="scss" scoped>
