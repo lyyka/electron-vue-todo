@@ -10,11 +10,15 @@ function getTodo(state){
     return state.todo
 }
 
-function authHeaders(){
-    const user = localStorage.getItem('user')
-    if(user){
+function isAuth(state){
+    return state.auth_token !== undefined
+}
+
+function authHeaders(state){
+    const token = state.auth_token
+    if(token !== undefined){
         return {
-            Authorization: `Bearer ${user.token}`
+            Authorization: `Bearer ${token}`
         }
     }
     else{ 
@@ -26,5 +30,6 @@ export default {
     getToDos,
     getBaseAPIUrl,
     getTodo,
+    isAuth,
     authHeaders,
 }

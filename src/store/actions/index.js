@@ -2,7 +2,11 @@ import axios from 'axios'
 
 async function fetchNewTodos(context){
     try{
-        const {data} = await axios.get(`${context.getters.getBaseAPIUrl}/api/todos`)
+        const {data} = await axios.get(`${context.getters.getBaseAPIUrl}/api/todos`, {
+            headers: {
+                ...context.getters.authHeaders,
+            }
+        })
         context.commit("updateTodos", data)
     } catch(e){
         console.error(e)
@@ -11,14 +15,22 @@ async function fetchNewTodos(context){
 
 async function storeNewTodo(context, todo){
     try{
-        const {data} = await axios.post(`${context.getters.getBaseAPIUrl}/api/todos`, todo)
+        const {data} = await axios.post(
+            `${context.getters.getBaseAPIUrl}/api/todos`, 
+            todo,
+            {
+                headers: {
+                    ...context.getters.authHeaders,
+                }
+            }
+        )
         if(data.success){
             context.commit("updateTodos", [{...todo}])
             context.commit("resetCurrentTodo")
         }
     }
     catch(e){
-        console.error(e)
+        console.error(e.response.data.errors)
     }
 }
 

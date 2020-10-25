@@ -4,10 +4,6 @@
 
     export default {
         components: { VAddToDo, VToDoList },
-        
-        mounted(){
-            this.$router.push('register')
-        }
     };
 </script>
 <template>

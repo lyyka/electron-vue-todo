@@ -1,9 +1,12 @@
 <script>
     import VInput from '@/components/atoms/VInput'
     import VButton from '@/components/atoms/VButton'
+    import VErrorLabel from '@/components/atoms/VErrorLabel'
+    import { mapGetters, mapMutations } from 'vuex';
+    import axios from 'axios'
 
     export default {
-        components: {VInput, VButton},
+        components: {VInput, VButton, VErrorLabel},
 
         data() {
             return {
@@ -11,6 +14,7 @@
                     email: '',
                     password: '',
                 },
+                errors: {},
                 registrationSuccessful: false,
             }
         },
@@ -19,9 +23,24 @@
             this.registrationSuccessful = this.$route.params.registered
         },
 
-        methods: {
-            async handleLogin(){
+        computed: {
+            ...mapGetters(['getBaseAPIUrl'])
+        },
 
+        methods: {
+            ...mapMutations(['setAuthToken']),
+            async handleLogin(){
+                try{
+                    const { data } = await axios.post(`${this.getBaseAPIUrl}/api/auth/login`, this.form)
+                    if(data.jwt){
+                        localStorage.setItem('user-token', data.jwt)
+                        this.setAuthToken(data.jwt)
+                        this.$router.push('/')
+                    }
+                }
+                catch(e){
+                    this.errors = e.response.data.errors
+                }
             }
         }
     };
@@ -50,7 +69,8 @@
                 </div>
                 <div class='mb-3'>
                     <VInput 
-                        v-model="form.password" 
+                        v-model="form.password"
+                        type="password"
                         :placeholder="this.$t('fields.password')" 
                     />
                     <VErrorLabel

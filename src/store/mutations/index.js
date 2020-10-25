@@ -24,8 +24,23 @@ function resetCurrentTodo(state){
     }
 }
 
+function setAuthToken(state, token){
+    state.auth_token = token
+}
+
+function logOut(state){
+    state.auth_token = undefined
+    state.todos = []
+    state.todo = {
+        body: "",
+        due_date: undefined,
+    }
+}
+
 export default {
     updateTodos,
     updateSpecificTodo,
     resetCurrentTodo,
+    setAuthToken,
+    logOut,
 }

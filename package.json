@@ -9,6 +9,7 @@
     "sass:build": "sass public/sass/app.scss:public/app.css",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "npm run sass:build && vue-cli-service electron:serve",
+    "es": "npm run electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "package": "electron-forge package",

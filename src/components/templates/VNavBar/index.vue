@@ -1,5 +1,5 @@
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
     data () {
         return {
@@ -13,10 +13,19 @@ export default {
         this.selected_locale = this.$i18n.locale
     },
 
+    computed: {
+        ...mapGetters(['isAuth']),
+    },
+
     methods: {
-        ...mapGetters(['getLocale']),
+        ...mapMutations(['logOut']),
         changeLocale(){
             this.$i18n.locale = this.selected_locale
+        },
+        handleLogOut(){
+            this.logOut()
+            localStorage.removeItem('user-token')
+            this.$router.push('/login')
         }
     }
 }
@@ -31,6 +40,13 @@ export default {
                 {{ locale_strings[i] }}
             </option>
         </select>
+        <button 
+            v-if="isAuth"
+            @click="handleLogOut" 
+            type='button' 
+            class="ml-3 px-3 py-2 rounded c-bg-orange text-white border-0 shadow-sm">
+            Izloguj se
+        </button>
     </nav>
 </template>
 <style lang="scss" scoped>
