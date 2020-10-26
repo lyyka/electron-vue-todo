@@ -23,14 +23,18 @@
 
         methods: {
             ...mapActions(['updateTodo']),
-            async onChecked(){
+            async onChecked(e){
                 this.updateTodo(this.todoObject)
+                e.stopPropagation()
+            },
+            handleClick(){
+                this.$emit('click')
             }
         },
     }
 </script>
 <template>
-    <div class="todo-card border-bottom py-2 px-3 d-flex justify-content-between align-items-center">
+    <div @click="handleClick" class="todo-card border-bottom py-2 px-3 d-flex justify-content-between align-items-center">
         <VCheckBox
             v-model="todoObject.completed" 
             @input='onChecked' 

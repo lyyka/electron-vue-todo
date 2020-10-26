@@ -10,6 +10,7 @@ export default {
     inputPlaceholder: "Enter a todo...",
     dueDatePlaceholder: "Due date...",
     completedTitle: "Completed",
+    todoCompletedMark: "Completed",
 
     // Register
     registerTitle: 'Register',

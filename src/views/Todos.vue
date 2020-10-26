@@ -1,6 +1,6 @@
 <script>
     import VAddToDo from "@/components/molecules/VAddToDo"
-    import VToDoList from "@/components/molecules/VToDoList"
+    import VToDoList from "@/components/organisms/VToDoList"
 
     export default {
         components: { VAddToDo, VToDoList },

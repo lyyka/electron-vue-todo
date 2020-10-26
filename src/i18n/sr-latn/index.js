@@ -10,6 +10,7 @@ export default {
     inputPlaceholder: "Unesi zadatak...",
     dueDatePlaceholder: "Krajnji datum...",
     completedTitle: 'Završeni',
+    todoCompletedMark: 'Završen',
 
     // Register page
     registerTitle: 'Registruj se',

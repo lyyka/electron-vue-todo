@@ -39,7 +39,12 @@
                     }
                 }
                 catch(e){
-                    this.errors = e.response.data.errors
+                    if(e.response.data.errors !== undefined){
+                        this.errors = e.response.data.errors
+                    }
+                    else{
+                        this.errors = {}
+                    }
                 }
             }
         }
