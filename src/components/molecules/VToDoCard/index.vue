@@ -31,7 +31,7 @@
 </script>
 <template>
     <div class="todo-card border-bottom py-2 px-3 d-flex justify-content-between align-items-center">
-        <VCheckBox 
+        <VCheckBox
             v-model="todoObject.completed" 
             @input='onChecked' 
             :completedLabel="todoObject.completed" 

@@ -1,4 +1,14 @@
 import axios from 'axios'
+import  i18n from '@/i18n'
+
+async function handleRequestErrors(context, e){
+    const response = e.response
+    if(response.status === 403) {
+        // Token expired
+        context.commit("logOut")
+    }
+    alert(i18n.t('errors.default'))
+}
 
 async function fetchNewTodos(context){
     try{
@@ -9,7 +19,7 @@ async function fetchNewTodos(context){
         })
         context.commit("updateTodos", data)
     } catch(e){
-        console.error(e)
+        context.dispatch('handleRequestErrors', e)
     }
 }
 
@@ -30,13 +40,12 @@ async function storeNewTodo(context, todo){
         }
     }
     catch(e){
-        console.error(e.response.data.errors)
+        context.dispatch('handleRequestErrors', e)
     }
 }
 
 async function updateTodo(context, todo){
     try{
-        console.log(todo)
         await axios.put(`${context.getters.getBaseAPIUrl}/api/todos/update`, todo, {
             headers: {
                 ...context.getters.authHeaders,
@@ -45,11 +54,12 @@ async function updateTodo(context, todo){
         context.commit("updateSpecificTodo", todo)
     }
     catch(e){
-        console.error(e.response.data)
+        context.dispatch('handleRequestErrors', e)
     }
 }
 
 export default {
+    handleRequestErrors,
     fetchNewTodos,
     storeNewTodo,
     updateTodo,
