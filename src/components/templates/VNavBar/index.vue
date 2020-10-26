@@ -24,8 +24,6 @@ export default {
         },
         handleLogOut(){
             this.logOut()
-            localStorage.removeItem('user-token')
-            this.$router.push('/login')
         }
     }
 }

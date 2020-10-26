@@ -36,11 +36,16 @@ async function storeNewTodo(context, todo){
 
 async function updateTodo(context, todo){
     try{
-        await axios.put(`${context.getters.getBaseAPIUrl}/api/todos/update`, todo)
+        console.log(todo)
+        await axios.put(`${context.getters.getBaseAPIUrl}/api/todos/update`, todo, {
+            headers: {
+                ...context.getters.authHeaders,
+            }
+        })
         context.commit("updateSpecificTodo", todo)
     }
     catch(e){
-        console.error(e)
+        console.error(e.response.data)
     }
 }
 

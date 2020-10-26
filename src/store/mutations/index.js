@@ -1,3 +1,5 @@
+import router from '../../router'
+
 function updateTodos(state, todos){
     todos.forEach(todo => {
         if(todo.due_date){
@@ -35,6 +37,8 @@ function logOut(state){
         body: "",
         due_date: undefined,
     }
+    localStorage.removeItem('user-token')
+    router.push('/login')
 }
 
 export default {

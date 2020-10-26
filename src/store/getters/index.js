@@ -11,7 +11,7 @@ function getTodo(state){
 }
 
 function isAuth(state){
-    return state.auth_token !== undefined
+    return state.auth_token
 }
 
 function authHeaders(state){
