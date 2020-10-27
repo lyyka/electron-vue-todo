@@ -1,5 +1,5 @@
 import axios from 'axios'
-import  i18n from '@/i18n'
+import  i18n from '@/packages/i18n'
 
 async function handleRequestErrors(context, e){
     const response = e.response
@@ -35,7 +35,7 @@ async function storeNewTodo(context, todo){
             }
         )
         if(data.success){
-            context.commit("updateTodos", [{...todo}])
+            context.commit("updateTodos", [{...data.todo}])
             context.commit("resetCurrentTodo")
         }
     }

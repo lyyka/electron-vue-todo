@@ -60,7 +60,7 @@
                 {{ this.$t("noToDos") }}
             </h5>
         </div>
-        <div v-if="activeTodo" class="border-left border-top" id="view-col">
+        <div v-if="activeTodo" class="border-left border-top border-bottom" id="view-col">
             <VToDoView 
                 :todo="activeTodo"
             />

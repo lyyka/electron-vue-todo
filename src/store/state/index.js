@@ -7,6 +7,7 @@ export default {
     todos: [],
     todo: {
         body: "",
+        content: "",
         due_date: undefined,
     }
 }

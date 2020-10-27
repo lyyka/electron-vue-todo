@@ -10,7 +10,10 @@ export default {
     inputPlaceholder: "Enter a todo...",
     dueDatePlaceholder: "Due date...",
     completedTitle: "Completed",
+
+    // Todo View
     todoCompletedMark: "Completed",
+    descriptionInputPlaceholder: 'Unesite opis...',
 
     // Register
     registerTitle: 'Register',

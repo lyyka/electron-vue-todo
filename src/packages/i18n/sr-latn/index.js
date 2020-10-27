@@ -10,7 +10,10 @@ export default {
     inputPlaceholder: "Unesi zadatak...",
     dueDatePlaceholder: "Krajnji datum...",
     completedTitle: 'Završeni',
+
+    // Todo View
     todoCompletedMark: 'Završen',
+    descriptionInputPlaceholder: 'Unesite opis...',
 
     // Register page
     registerTitle: 'Registruj se',
